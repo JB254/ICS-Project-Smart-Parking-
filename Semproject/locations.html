@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en-GB" dir="ltr" prefix="og: http://ogp.me/ns#">
+<head>
+	<title>Smart Parking | Locations</title><meta name="description" content="Find closest location and book a space" />	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="shortcut icon" type="image/x-icon" href="http://vevs.website/web-demo/car-parking-website/app/web/upload/medium/favicon-28.ico">
+	<base href="project.html" />
+	<style>.preload * {-webkit-transition: none !important;-moz-transition: none !important;-ms-transition: none !important;-o-transition: none !important;}
+	#hideAll {position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: #fff; overflow: hidden; z-index: 9999}</style>
+	<link rel="stylesheet" href="style.css" />   
+	</head>
+<body class="preload" 
+	data-action="locations.html" 
+	data-page="locations" 
+	data-editor="project.html">
+		<div style="display: none" id="hideAll">&nbsp;</div>
+	<script id="hideScript">document.getElementById("hideAll").style.display = "block";</script> 
+	<div id="pjWrapper" class="wrapper">
+	    <div class="bar">
+	<div class="shell clearfix">
+			<div class="barSocials cms-e-section" >
+			<ul>
+				<li><a href="https://www.facebook.com" target="_blank" class="linkFacebook">facebook</a></li><li><a href="https://plus.google.com" target="_blank" class="linkGooglePlus">googlePlus</a></li><li><a href="https://www.instagram.com" target="_blank" class="linkInstagram">Instagram</a></li><li><a href="https://www.linkedin.com" target="_blank" class="linkLinkedin">Linkedin</a></li><li><a href="https://www.pinterest.com" target="_blank" class="linkPinterest">Pinterest</a></li><li><a href="https://twitter.com" target="_blank" class="linkTwitter">twitter</a></li>			</ul>
+		</div>
+						<div class="dropdown-languages">
+					<a href="#" class="nav-languages" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<span class="">EN</span>
+							<img src="/web-demo/car-parking-website/app/plugins/pjCms/framework/libs/pj/img/flags/gb.png" alt="">
+													<span class="caret"></span>
+					</a>
+			
+					<ul class="dropdown-menu">
+													<li class="active">
+								<a href="project.html">
+								English&#x200E;<img src="/web-demo/car-parking-website/app/plugins/pjCms/framework/libs/pj/img/flags/gb.png" alt="English"></a>
+							</li>
+														<li>
+								<a href="project.html">
+								Kiswahili&#x200E;<img src="/web-demo/car-parking-website/app/plugins/pjCms/framework/libs/pj/img/flags/bg.png" alt="Kiswahili"></a>
+							</li>
+												</ul>
+				</div>
+						
+		<div class="barContacts cms-e-section" >
+			<ul class="listContacts">
+				<li><i class="ico icoPhone"></i> 0717278364</li>
+				<li><i class="ico icoPhone"></i> 0717009692</li>
+				<li><a href=""><i class="ico icoMail"></i>jamez.k.boro@gmail.com</a></li>
+				<li><a href=""><i class="ico icoMail"></i>bakari.rodney@gmail.com</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<header id="header">
+	<div class="shell clearfix">
+		<div class="logo wc-thumb btn-gallery-replace" >
+			<a href=""><img src="sps3.jpg" alt="" title="" data-id="14" class="wc-image"></a>
+		</div><!-- /.logo -->
+		
+		<nav class="nav">
+			<ul>
+				<li><a href="project.html">Home</a></li><li><a href="reservations.html">Reservations</a></li><li class=""><a href="locations.html">Locations</a></li><li><a href="contactus.html">Contact Us</a></li>			</ul>
+		</nav><!-- /.nav -->
+	</div>
+</header>	    <div class="main">
+	<div class="shell">
+		<article class="article articleLocations">
+			<header class="articleHead cms-e-section">
+				<h1><span class="wc-editable" data-pk="locations.html" data-type="text">Locations</span></h1>
+
+				<div class="paragraph">
+					<span class="wc-editable" data-pk="ws_locations_desc" data-type="textarea">Below you will all the available parking areas all over Nairobi Metropolitan. You can also click on directions at the various parking areas for a map-view if you require navigational help,as well as make reservations through booking. Please feel free to contact us for any enquiries.</span>				</div>
+			</header>
+
+			<div class="articleBody">
+				<div class="sectionLocationsScript sectionLocations">
+					<div class="shell">
+						<div class="row customLocations">
+							<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 pull-right">
+								<div id="pjCrMapCanvas" class="map locationMap"></div>
+							</div>
+
+							<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 pull-left pre-scrollable">
+								<div id="pjCrDirectionContainer" style="display: none">
+									<div class="stl-directions-menu">
+										<a href="#" class="pjCrCloseDirection"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> <span class="wc-editable" data-pk="ws_link_close" data-type="text">Close</span></a>
+									</div>
+									<div id="pjCrDirectionPanel">
+									</div>
+								</div>
+
+								<ul id="pjCrLoactionList" class="list-unstyled locations">
+																			<li class="location pjCrLocationItem cms-e-section" data-index="0">
+											<div class="locationInner">
+												<div class="locationImage">
+													<img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-v="http://vevs.website/web-demo/car-parking-website/app/web/upload/medium/b7e0d9039c8d7b07f46e67d8ad6a7556.jpg" alt="Nyayo House" />
+												</div>
+												<div class="locationContent">
+													<div class="locationTitle"><span class="wc-editable wc-editable-default" 
+														data-model="locations.html" 
+														data-field="name" 
+														data-foreign_id="4" 
+														data-type="text">Junction Mall Parking</span></div>
+													<ul class="list-unstyled locationMeta">
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_phone" data-type="text">Phone</span>: </dt>
+																<dd>07425678945</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_email" data-type="text">Email</span>: </dt>
+																
+																<dd>
+																<a href="Junctionmall@gmail.com">Junctionmall@gmail.com</a>																</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_address" data-type="text">Address</span>: </dt>
+																<dd>Junction Mall Parking, Kenya</dd>
+															</dl>
+														</li>
+														
+														<li class="collapse" id="workingTime4">
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_working_time" data-type="text">Working time</span></dt>
+																<dd></dd>
+															</dl>
+															<dl class="dl-horizontal">
+																<dt></dt>
+																<dd>Mon - Sat 8am : 10pm<br />
+Sun 10am : 9pm</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<div class="form-inline form collapse formDirection4" id="formDirection4">
+																<label for=""><span class="wc-editable" data-pk="ws_direction_from" data-type="text">From</span>: </label>
+	
+																<div class="form-group">
+																	<input type="text" id="from_0" name="from" class="form-control" data-index="0"/>
+																	
+																	<button type="button" class="btn btn-primary pjCrGoDirection" data-index="0"><span class="wc-editable" data-pk="ws_btn_go" data-type="text">Go</span></button>
+																</div>
+															</div>
+														</li>
+													</ul>
+													<div class="locationActions">
+														<ul class="list-inline">
+															
+															</li>
+																															<li>
+																	<a href="map marker.html" class="btn btn-link bookForLocation" role="button" data-id="4">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Directions
+
+																	<a href="SeatPreview/index.php" class="btn btn-link bookForLocation" role="button" data-id="5">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Book space</span>																	</a>
+																</li>
+																														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+																				<li class="location pjCrLocationItem cms-e-section" data-index="1">
+											<div class="locationInner">
+												<div class="locationImage">
+													<img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-v="http://vevs.website/web-demo/car-parking-website/app/web/upload/medium/5c34e58ee36b92c77d77ff5efa30776e.jpg" alt="Kenyatta University" />
+												</div>
+												<div class="locationContent">
+													<div class="locationTitle"><span class="wc-editable wc-editable-default" 
+														data-model="locations.html" 
+														data-field="name" 
+														data-foreign_id="5" 
+														data-type="text">Intercontinental Parking</span></div>
+													<ul class="list-unstyled locationMeta">
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_phone" data-type="text">Phone</span>: </dt>
+																<dd>0743074824</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_email" data-type="text">Email</span>: </dt>
+																
+																<dd>
+																<a href="IntCont@gmail.com">IntCont@gmail.com</a>																</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_address" data-type="text">Address</span>: </dt>
+																<dd>Intercontinental Parking, Kenya</dd>
+															</dl>
+														</li>
+														
+														<li class="collapse" id="workingTime5">
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_working_time" data-type="text">Working time</span></dt>
+																<dd></dd>
+															</dl>
+															<dl class="dl-horizontal">
+																<dt></dt>
+																<dd>Mon - Sun 7am : 11pm</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<div class="form-inline form collapse formDirection5" id="formDirection5">
+																<label for=""><span class="wc-editable" data-pk="ws_direction_from" data-type="text">From</span>: </label>
+	
+																<div class="form-group">
+																	<input type="text" id="from_1" name="from" class="form-control" data-index="1"/>
+																	
+																	<button type="button" class="btn btn-primary pjCrGoDirection" data-index="1"><span class="wc-editable" data-pk="ws_btn_go" data-type="text">Go</span></button>
+																</div>
+															</div>
+														</li>
+													</ul>
+													<div class="locationActions">
+														<ul class="list-inline">
+																												<li>
+																	<a href="map marker.html" class="btn btn-link bookForLocation" role="button" data-id="5">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Directions
+
+																	<a href="SeatPreview/index.php" class="btn btn-link bookForLocation" role="button" data-id="5">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Book space</span>																	</a>
+																</li>
+																														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+																		</ul>
+																		<li class="location pjCrLocationItem cms-e-section" data-index="2">
+											<div class="locationInner">
+												<div class="locationImage">
+													<img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-v="http://vevs.website/web-demo/car-parking-website/app/web/upload/medium/b7e0d9039c8d7b07f46e67d8ad6a7556.jpg" alt="Nyayo House" />
+												</div>
+												<div class="locationContent">
+													<div class="locationTitle"><span class="wc-editable wc-editable-default" 
+														data-model="locations.html" 
+														data-field="name" 
+														data-foreign_id="4" 
+														data-type="text">Reinsurance Plaza Parking</span></div>
+													<ul class="list-unstyled locationMeta">
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_phone" data-type="text">Phone</span>: </dt>
+																<dd>0743074824</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_email" data-type="text">Email</span>: </dt>
+																
+																<dd>
+																<a href="ReinsurancePlaza@gmail.com">ReinsurancePlaza@gmail.com</a>																</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_address" data-type="text">Address</span>: </dt>
+																<dd>Reinsurance Plaza Parking, Kenya</dd>
+															</dl>
+														</li>
+														
+														<li class="collapse" id="workingTime4">
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_working_time" data-type="text">Working time</span></dt>
+																<dd></dd>
+															</dl>
+															<dl class="dl-horizontal">
+																<dt></dt>
+																<dd>Mon - Sat 8am : 10pm<br />
+Sun 10am : 9pm</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<div class="form-inline form collapse formDirection4" id="formDirection4">
+																<label for=""><span class="wc-editable" data-pk="ws_direction_from" data-type="text">From</span>: </label>
+	
+																<div class="form-group">
+																	<input type="text" id="from_0" name="from" class="form-control" data-index="2"/>
+																	
+																	<button type="button" class="btn btn-primary pjCrGoDirection" data-index="2"><span class="wc-editable" data-pk="ws_btn_go" data-type="text">Go</span></button>
+																</div>
+															</div>
+														</li>
+													</ul>
+													<div class="locationActions">
+														<ul class="list-inline">
+															
+															</li>
+																															<li>
+																	<a href="map marker.html" class="btn btn-link bookForLocation" role="button" data-id="4">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Directions
+																	<a href="SeatPreview/index.php" class="btn btn-link bookForLocation" role="button" data-id="5">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Book space</span>																	</a>
+																</li>
+																														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="location pjCrLocationItem cms-e-section" data-index="3">
+											<div class="locationInner">
+												<div class="locationImage">
+													<img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-v="http://vevs.website/web-demo/car-parking-website/app/web/upload/medium/5c34e58ee36b92c77d77ff5efa30776e.jpg" alt="Nyayo House" />
+												</div>
+												<div class="locationContent">
+													<div class="locationTitle"><span class="wc-editable wc-editable-default" 
+														data-model="locations.html" 
+														data-field="name" 
+														data-foreign_id="4" 
+														data-type="text">University of Nairobi Parking</span></div>
+													<ul class="list-unstyled locationMeta">
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_phone" data-type="text">Phone</span>: </dt>
+																<dd>0745858947</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_email" data-type="text">Email</span>: </dt>
+																
+																<dd>
+																<a href="UON@gmail.com">Uon@gmail.com</a>																</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_address" data-type="text">Address</span>: </dt>
+																<dd>UON Parking, Kenya</dd>
+															</dl>
+														</li>
+														
+														<li class="collapse" id="workingTime4">
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_working_time" data-type="text">Working time</span></dt>
+																<dd></dd>
+															</dl>
+															<dl class="dl-horizontal">
+																<dt></dt>
+																<dd>Mon - Sat 8am : 10pm<br />
+Sun 10am : 9pm</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<div class="form-inline form collapse formDirection4" id="formDirection4">
+																<label for=""><span class="wc-editable" data-pk="ws_direction_from" data-type="text">From</span>: </label>
+	
+																<div class="form-group">
+																	<input type="text" id="from_0" name="from" class="form-control" data-index="3"/>
+																	
+																	<button type="button" class="btn btn-primary pjCrGoDirection" data-index="3"><span class="wc-editable" data-pk="ws_btn_go" data-type="text">Go</span></button>
+																</div>
+															</div>
+														</li>
+													</ul>
+													<div class="locationActions">
+														<ul class="list-inline">
+															
+															</li>
+																															<li>
+																	<a href="map marker.html" class="btn btn-link bookForLocation" role="button" data-id="4">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Directions
+																	<a href="SeatPreview/index.php class="btn btn-link bookForLocation" role="button" data-id="5">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Book space</span>																	</a>
+																</li>
+																														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="location pjCrLocationItem cms-e-section" data-index="4">
+											<div class="locationInner">
+												<div class="locationImage">
+													<img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-v="http://vevs.website/web-demo/car-parking-website/app/web/upload/medium/b7e0d9039c8d7b07f46e67d8ad6a7556.jpg" alt="Nyayo House" />
+												</div>
+												<div class="locationContent">
+													<div class="locationTitle"><span class="wc-editable wc-editable-default" 
+														data-model="locations.html" 
+														data-field="name" 
+														data-foreign_id="4" 
+														data-type="text">Prestige Plaza Parking</span></div>
+													<ul class="list-unstyled locationMeta">
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_phone" data-type="text">Phone</span>: </dt>
+																<dd>0748920929</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_email" data-type="text">Email</span>: </dt>
+																
+																<dd>
+																<a href="PrestigePlaza@gmail.com">PrestigePlaza@gmail.com</a>																</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_address" data-type="text">Address</span>: </dt>
+																<dd>Prestige Plaza Parking, Kenya</dd>
+															</dl>
+														</li>
+														
+														<li class="collapse" id="workingTime4">
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_working_time" data-type="text">Working time</span></dt>
+																<dd></dd>
+															</dl>
+															<dl class="dl-horizontal">
+																<dt></dt>
+																<dd>Mon - Sat 8am : 10pm<br />
+Sun 10am : 9pm</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<div class="form-inline form collapse formDirection4" id="formDirection4">
+																<label for=""><span class="wc-editable" data-pk="ws_direction_from" data-type="text">From</span>: </label>
+	
+																<div class="form-group">
+																	<input type="text" id="from_0" name="from" class="form-control" data-index="4"/>
+																	
+																	<button type="button" class="btn btn-primary pjCrGoDirection" data-index="4"><span class="wc-editable" data-pk="ws_btn_go" data-type="text">Go</span></button>
+																</div>
+															</div>
+														</li>
+													</ul>
+													<div class="locationActions">
+														<ul class="list-inline">
+															
+															</li>
+																															<li>
+																	<a href="map marker.html" class="btn btn-link bookForLocation" role="button" data-id="4">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Directions
+																	<a href="SeatPreview/index.php" class="btn btn-link bookForLocation" role="button" data-id="5">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Book space</span>																	</a>
+																</li>
+																														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="location pjCrLocationItem cms-e-section" data-index="5">
+											<div class="locationInner">
+												<div class="locationImage">
+													<img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-v="http://vevs.website/web-demo/car-parking-website/app/web/upload/medium/5c34e58ee36b92c77d77ff5efa30776e.jpg" alt="Nyayo House" />
+												</div>
+												<div class="locationContent">
+													<div class="locationTitle"><span class="wc-editable wc-editable-default" 
+														data-model="locations.html" 
+														data-field="name" 
+														data-foreign_id="4" 
+														data-type="text">Yaya Plaza Parking</span></div>
+													<ul class="list-unstyled locationMeta">
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_phone" data-type="text">Phone</span>: </dt>
+																<dd>0783748274</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_email" data-type="text">Email</span>: </dt>
+																
+																<dd>
+																<a href="YayaPlaza@gmail.com">YayaPlaza@gmail.com</a>																</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_address" data-type="text">Address</span>: </dt>
+																<dd>Yaya Plaza Parking, Kenya</dd>
+															</dl>
+														</li>
+														
+														<li class="collapse" id="workingTime4">
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_working_time" data-type="text">Working time</span></dt>
+																<dd></dd>
+															</dl>
+															<dl class="dl-horizontal">
+																<dt></dt>
+																<dd>Mon - Sat 8am : 10pm<br />
+Sun 10am : 9pm</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<div class="form-inline form collapse formDirection4" id="formDirection4">
+																<label for=""><span class="wc-editable" data-pk="ws_direction_from" data-type="text">From</span>: </label>
+	
+																<div class="form-group">
+																	<input type="text" id="from_0" name="from" class="form-control" data-index="5"/>
+																	
+																	<button type="button" class="btn btn-primary pjCrGoDirection" data-index="5"><span class="wc-editable" data-pk="ws_btn_go" data-type="text">Go</span></button>
+																</div>
+															</div>
+														</li>
+													</ul>
+													<div class="locationActions">
+														<ul class="list-inline">
+															
+															</li>
+																															<li>
+																	<a href="map marker.html" class="btn btn-link bookForLocation" role="button" data-id="4">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Directions
+																	<a href="SeatPreview/index.php" class="btn btn-link bookForLocation" role="button" data-id="5">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Book space</span>																	</a>
+																</li>
+																														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="location pjCrLocationItem cms-e-section" data-index="0">
+											<div class="locationInner">
+												<div class="locationImage">
+													<img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-v="http://vevs.website/web-demo/car-parking-website/app/web/upload/medium/b7e0d9039c8d7b07f46e67d8ad6a7556.jpg" alt="Nyayo House" />
+												</div>
+												<div class="locationContent">
+													<div class="locationTitle"><span class="wc-editable wc-editable-default" 
+														data-model="locations.html" 
+														data-field="name" 
+														data-foreign_id="4" 
+														data-type="text">Nyayo House Parking</span></div>
+													<ul class="list-unstyled locationMeta">
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_phone" data-type="text">Phone</span>: </dt>
+																<dd>0743074824</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_email" data-type="text">Email</span>: </dt>
+																
+																<dd>
+																<a href="Nyayohouse@gmail.com">Nyayohouse@gmail.com</a>																</dd>
+															</dl>
+														</li>
+												
+														<li>
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_address" data-type="text">Address</span>: </dt>
+																<dd>Nyayo House Parking, Kenya</dd>
+															</dl>
+														</li>
+														
+														<li class="collapse" id="workingTime4">
+															<dl class="dl-horizontal">
+																<dt><span class="wc-editable" data-pk="ws_working_time" data-type="text">Working time</span></dt>
+																<dd></dd>
+															</dl>
+															<dl class="dl-horizontal">
+																<dt></dt>
+																<dd>Mon - Sat 8am : 10pm<br />
+Sun 10am : 9pm</dd>
+															</dl>
+														</li>
+														
+														<li>
+															<div class="form-inline form collapse formDirection4" id="formDirection4">
+																<label for=""><span class="wc-editable" data-pk="ws_direction_from" data-type="text">From</span>: </label>
+	
+																<div class="form-group">
+																	<input type="text" id="from_0" name="from" class="form-control" data-index="0"/>
+																	
+																	<button type="button" class="btn btn-primary pjCrGoDirection" data-index="0"><span class="wc-editable" data-pk="ws_btn_go" data-type="text">Go</span></button>
+																</div>
+															</div>
+														</li>
+													</ul>
+													<div class="locationActions">
+														<ul class="list-inline">
+															
+															</li>
+																															<li>
+																	<a href="map marker.html" class="btn btn-link bookForLocation" role="button" data-id="4">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Directions
+																	<a href="SeatPreview/index.php" class="btn btn-link bookForLocation" role="button" data-id="5">
+																		<i>+</i> <span class="wc-editable" data-pk="ws_btn_book_now_cap" data-type="action">Book space</span>																	</a>
+																</li>
+																														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+</div>
+	<script type="text/javascript">
+	var contactMapOpts = [{"lat":51.8762646,"lng":-0.3717471,"html":"<div><div><strong>Nyayo House<\/strong><\/div><div>phone: <span>0717009692<\/span><\/div><div>email: <span><a href=\"mailto:&#108;&#117;&#116;&#111;&#110;&#64;&#119;&#101;&#98;&#115;&#105;&#116;&#101;&#46;&#99;&#111;&#109;\">&#108;&#117;&#116;&#111;&#110;&#64;&#119;&#101;&#98;&#115;&#105;&#116;&#101;&#46;&#99;&#111;&#109;<\/a><\/span><\/div><div>address: <span>Nyayo House, Kenya<\/span><\/div><div><a href=\"reservations.html#!\/Search\/location_id:4\" class=\"btn btn-link bookForLocation\" role=\"button\" data-id=\"4\"><span class=\"wc-editable\" data-pk=\"ws_btn_book_now_cap\" data-type=\"action\">Book now<\/span><\/a><\/div><\/div>"},{"lat":51.5149566,"lng":-0.1445616,"html":"<div><div><strong>Nyayo House<\/strong><\/div><div>phone: <span>0743074824<\/span><\/div><div>email: <span><a href=\"mailto:&#111;&#120;&#102;&#111;&#114;&#100;&#99;&#105;&#114;&#99;&#117;&#115;&#64;&#119;&#101;&#98;&#115;&#105;&#116;&#101;&#46;&#99;&#111;&#109;\">&#111;&#120;&#102;&#111;&#114;&#100;&#99;&#105;&#114;&#99;&#117;&#115;&#64;&#119;&#101;&#98;&#115;&#105;&#116;&#101;&#46;&#99;&#111;&#109;<\/a><\/span><\/div><div>address: <span>Kenyatta University, Kenya<\/span><\/div><div><a href=\"reservations.html#!\/Search\/location_id:5\" class=\"btn btn-link bookForLocation\" role=\"button\" data-id=\"5\"><span class=\"wc-editable\" data-pk=\"ws_btn_book_now_cap\" data-type=\"action\">Book now<\/span><\/a><\/div><\/div>"}];	
+	</script>
+
+		    <footer id="footer">
+	<div class="shell">
+		<div class="footer-top">
+			<div class="logo wc-thumb btn-gallery-replace" >
+				<a href=""><img src="sps3.jpg" alt="" title="" data-id="14" class="wc-image"></a>
+			</div><!-- /.logo -->
+							<div class="socials cms-e-section"  >
+					<ul>
+						<li><a href="https://www.facebook.com" target="_blank" class="linkFacebook">facebook</a></li><li><a href="https://plus.google.com" target="_blank" class="linkGooglePlus">googlePlus</a></li><li><a href="https://www.instagram.com" target="_blank" class="linkInstagram">Instagram</a></li><li><a href="https://www.linkedin.com" target="_blank" class="linkLinkedin">Linkedin</a></li><li><a href="https://www.pinterest.com" target="_blank" class="linkPinterest">Pinterest</a></li><li><a href="https://twitter.com" target="_blank" class="linkTwitter">twitter</a></li>					</ul>
+				</div>
+						</div><!-- /.footer-top -->
+
+		<p class="copyright">
+			<span class="cms-e-ib cms-e-section">
+
+				&copy; 2018 <a href="">Smart Parking</a> <span class="wc-editable" data-pk="ws_rights_reserved" data-type="text">All rights reserved.</span> 
+				<a href="terms.html"><span class="wc-editable" data-pk="" data-type="action">Terms</span></a>			</span>
+		</p><!-- /.copyright -->
+
+		<p class="credits"><a href="" target="_blank">Smart Parking</a> by <a href="project.html" target="_blank">Smart Parking</a></p>	</div>
+</footer>	</div>
+	<noscript id="deferred-styles">
+		<link rel="stylesheet" type="text/css" href="http://vevs.website/web-demo/car-parking-website/index.php?controller=pjFront&action=pjActionLoadCss&a=pjActionLocations&widget=on&script_id=8&demo=3&template=template_3&theme=theme1" id="deferred-sheet" />
+    </noscript>
+	<script>
+    (function (w, d) {
+		var loadDeferredStyles = function() {
+			var addStylesNode = d.getElementById("deferred-styles");
+			var replacement = d.createElement("div");
+			replacement.innerHTML = addStylesNode.textContent;
+			d.body.appendChild(replacement);
+			
+			var img = d.createElement('img');
+			img.onerror = function () {
+				var el = d.getElementById("hideAll");
+				el.parentNode.removeChild(el);
+				el = d.getElementById("hideScript");
+				el.parentNode.removeChild(el);
+				w.setTimeout(function() {
+					d.body.className = '';
+				}, 0);
+			};
+			img.src = d.getElementById('deferred-sheet').getAttribute('href');
+
+			addStylesNode.parentElement.removeChild(addStylesNode);
+		};
+		var raf = w.requestAnimationFrame || w.mozRequestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame;
+		if (raf) raf(function() { w.setTimeout(loadDeferredStyles, 0); });
+		else w.addEventListener('load', loadDeferredStyles);
+	
+		w.addEventListener('load', function () {
+			var i, iCnt, v,
+				vizimgDefer = d.getElementsByTagName('img');
+			for (i = 0, iCnt = vizimgDefer.length; i < iCnt; i += 1) {
+				v = vizimgDefer[i].getAttribute('data-v');
+				if (v) {
+					vizimgDefer[i].setAttribute('src', v);
+				}
+			}
+		}, true);
+	
+		var fired = false;
+		w.addEventListener("scroll", function() {
+			if ((d.documentElement.scrollTop != 0 && fired === false) || (d.body.scrollTop != 0 && fired === false)) {
+				var i, iCnt, src, imgDefer = d.getElementsByTagName('img');
+				for (i = 0, iCnt = imgDefer.length; i < iCnt; i += 1) {
+					src = imgDefer[i].getAttribute('data-src');
+					if (src) {
+						imgDefer[i].setAttribute('src', src);
+					}
+				}
+				fired = true;
+			}
+		}, true);
+    })(window, document);
+	WebFontConfig = {
+		classes: false,
+		events: false,
+		google: {
+			families: ['Amiri:400,400i,700,700i:arabic',
+				'Arimo:400,700i,700,400i:hebrew',
+				'Open Sans:400,300,400i,300i,600,600i,700,700i,800,800i:latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic',
+				'Noto Serif:400,700,700i,400i:latin,cyrillic,greek-ext,vietnamese,latin-ext,cyrillic-ext,greek',
+				'Raleway:300,300i,400,400i,700,700i']
+		}
+	};
+	(function(d) {
+		var wf = d.createElement('script'), s = d.scripts[0];
+		wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+		wf.async = true;
+		s.parentNode.insertBefore(wf, s);
+	})(document);	</script>
+	</body>
+</html>

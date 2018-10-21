@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+       Smart Parking System | </title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://patahapa.com/assets/css/bootstrap.min.css" >    
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="https://patahapa.com/assets/css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="https://patahapa.com/assets/css/responsive.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="https://patahapa.com/assets/fonts/simple-line-icons.css"> 
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="https://patahapa.com/assets/css/slicknav.css">
+    <!-- Nivo Lightbox -->
+    <link rel="stylesheet" type="text/css" href="https://patahapa.com/assets/css/nivo-lightbox.css" > 
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="https://patahapa.com/assets/css/animate.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="https://patahapa.com/assets/css/owl.carousel.css"> 
+     <!-- jQuery Load -->  
+     <script src="https://patahapa.com/assets/js/jquery.min.js"></script> 
+    <script>
+    function selectSeats(sid) {
+            $(".loading").show();
+          $.ajax({
+                type: 'post',
+                url: 'https://patahapa.com/swap_seats.php',
+                data: 'si=' + sid,
+                dataType: "json",
+                success: function (data) {
+                    $(".loading").show();
+                    $(".nafasi").load(" .nafasi>*","");
+                    $(".loading").show();
+                    setTimeout($(".loading").hide(), 20000); 
+                }
+            });
+            // setTimeout($(".loading").hide(), 5000); 
+            
+        }
+    </script>
+    <style type="text/css">
+.swp {
+    background: transparent;
+    border: none !important;
+    font-size:0;
+    /* width: 8px;
+    margin: -1px; */
+    padding: 0px;
+    /* position: absolute; */
+}
+form{
+    max-width:12px !important;
+    max-height:2px !important;
+}
+table {
+    border-spacing: 1px;
+    border-collapse: inherit;
+}
+.keyholder {
+  display: flex; 
+	padding-bottom:12px!important;
+}
+.keyitem{
+	text-align: center;
+	font-size:10px;
+	padding-top:8px;
+    flex-wrap: wrap;
+    width: 16%;
+	min-height:40px;
+	border-radius:4px;
+	margin:1px;
+}
+.area {
+  display: flex; 
+}
+.item {
+	text-align: center;
+	padding:0.1px;
+	font-size:10px;
+	/* flex: 0 0 2%;
+    flex-wrap: wrap; */
+	width:22px;
+    height:22px;
+	border-radius:4px;
+}
+.sold{
+	background:#d8d8d8;
+  border: solid 2px #d8d8d8;
+	color:#000;
+    /* margin-top:2px; */
+}
+.wheelchair{
+	background:#fff;
+  border: solid 2px #8d8d8d;
+	color:#8d8d8d;
+}
+.available{
+	background:#fff;
+  border: solid 2px #8d8d8d;
+}
+.my{
+	background:#0cb6cc;
+  border: solid 2px #0cb6cc;
+  /* margin-top:2px; */
+}
+.keyholder > .my, .keyholder > .kscreen{
+    color:white;
+}
+.empty{
+	background:white;
+  border: solid 2px #fff;
+  /* margin-top:2px; */
+	color:#0cb6cc;
+}
+.screen{
+	background:#8d8d8d;
+  border: solid 2px #0cb6cc;
+	height:10px;
+	border-radius: 50%/100px 100px 0 0;
+}
+.kscreen{
+	background:#8d8d8d;
+  border: solid 2px #0cb6cc;
+}
+</style>
+    <style type="text/css">
+.main-board{
+ /*background:rgba(255,255,255,0.5)!important; */
+}
+body{
+} 
+.nafasi{
+    overflow: scroll; width: 100%; height: auto;
+}
+table {
+    background-color: transparent;
+    margin-top: 14px;
+}
+.blog-image{
+	margin:10px;} 
+.meta-part{width:100%;
+}
+.fa-star{
+	color:goldenrod;}
+  .fa-star-half-o{
+	color:goldenrod;}
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0;
+        border-top-width: 0px;
+        border-top-style: none;
+        border-top-color: currentcolor;
+    border-top: 1px solid #3f3636;
+}
+.panel-group .panel {
+        border-radius: 0;
+        box-shadow: none;
+        border-color: #EEEEEE;
+    }
+    .panel-default > .panel-heading {
+        padding: 0;
+        border-radius: 0;
+        color: #212121;
+        background-color: #FAFAFA;
+        border-color: #EEEEEE;
+    }
+    .panel-title {
+        font-size: 14px;
+    }
+    .panel-title > a {
+        display: block;
+        padding: 15px;
+        text-decoration: none;
+    }
+    .more-less {
+        float: right;
+        color: #212121;
+    }
+    .panel-default > .panel-heading + .panel-collapse > .panel-body {
+        border-top-color: #EEEEEE;
+    }
+.demo {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+hr {
+    margin-top: 7px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top-width: 0px;
+    border-top-style: none;
+    border-top-color: currentcolor;
+    border-top: 1px solid #c1c1c1;
+}
+td, th {
+    padding: 1px !important;
+    text-align: center;
+    width: 22px!important;
+    height: 22px !important;
+}
+/* Absolute Center Spinner */
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+/* Transparent Overlay */
+.loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.8);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+</style>
+<script type="text/javascript">
+function Reveal (it, box) { 
+var vis = (box.checked) ? "block" : "none"; 
+document.getElementById(it).style.display = vis;
+} 
+</script>
+    <!-- Color CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="assets/css/colors/default.css" media="screen" /> 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Header Area wrapper Starts -->
+    
+	 <header id="header-wrap">
+	 <div id="roof" class="hidden-xs" style="background:black;">
+		 <div class="container">
+		   <div class="col-md-2 col-sm-6">
+			 <div class="info-bar-address">
+				<a href="https://patahapa.com/apps/"><i class="fa fa-shopping-cart"></i> The Marketplace</a>
+			 </div>
+		   </div>
+		   <div class="col-md-5 col-sm-6">
+			 <div class="quick-contacts">
+				 <span><i class="fa fa-phone-square"></i> 0736400000 / 0715249662</span>
+				 <span><i class="fa fa-envelope"></i></i>
+				 <a href="mailto:movies@patahapa.com">movies@patahapa.com</a></span>
+			 </div>
+		   </div>
+		   <div class="col-md-5 col-sm-6">
+		   <div class="quick-contacts">
+			   <span><a href="https://patahapa.com/">Bulk Bookings</a></span>
+			   <span>|</span>
+			   <span><a href="https://patahapa.com/events">Events</a></span>
+			   <span>|</span>
+			   <span><a href="https://patahapa.com/services">Services</a></span>
+			   <span>|</span>
+			   <span><a href="https://patahapa.com/services">Contact us</a></span>
+		   </div>
+		 </div>
+		 </div>
+	 </div>
+	 <div class="navigation-menu">
+	   <nav class="navbar navbar-default navbar-event" >
+		 <div class="container">
+		   <div class="navbar-header col-md-2">
+			 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+			   <span class="sr-only">Toggle navigation</span>
+			   <span class="fa fa-bar"></span>
+			   <span class="fa fa-bar"></span>
+			   <span class="fa fa-bar"></span>
+			 </button>
+			 <a class="navbar-brand" href="https://patahapa.com"><img src="https://patahapa.com/logo.png" width="150px" alt=""></a>
+		   </div>
+		   <div class="collapse navbar-collapse" id="navbar">
+			 <ul class="nav navbar-nav navbar-right">
+			   <li><a href="https://patahapa.com/">Century Garden city</a></li>
+			   <li><a href="https://patahapa.com/junction">Century Junction</a></li>
+			   <li><a href="https://patahapa.com/suncrest">Suncrest Cineplex</a></li> 
+			   <li><a href="https://patahapa.com/anga">Imax Town</a></li>  
+			   <li><a href="https://patahapa.com/diamond">Anga Diamond</a></li>              
+			   <li><a href="https://patahapa.com/panari">Anga Panari</a></li> 
+			 </ul>
+		   </div>
+		 </div>
+		 <ul class="wpb-mobile-menu">
+			  <li><a href="https://patahapa.com/">Century Garden city</a></li>
+			   <li><a href="https://patahapa.com/junction">Century Junction</a></li>
+			   <li><a href="https://patahapa.com/suncrest">Suncrest Cineplex</a></li>
+			  <li><a href="https://patahapa.com/anga">Imax Town</a></li>  
+			   <li><a href="https://patahapa.com/diamond">Ang in Diamond</a></li>              
+			   <li><a href="https://patahapa.com/panari">Anga Panari</a></li> 
+		  </ul>
+	   </nav>
+	 </div>
+   </header>
+
+	 
+    <!-- Main Slider Section Start -->
+     <div id="carousel-area">
+      <div id="carousel-slider" class="carouselheader" data-ride="carousel" 
+      style="max-height:200px; background-image: url(assets/img/slider/bg-2.jpg); background-position:center; color:#fff; text-align:left;">
+      <h2 class="section-title" style="color:#6cc3f4; text-align:left; margin-left:30px;">Century Cinemax Garden city, Nairobi | Seats</h2>
+      </div>
+    </div>
+      
+    <!-- Main Slider Section End -->
+    <!-- Schedule Section Start -->
+   <section id="speakers" class="section">
+      <div class="container" style="background-color:#fff0; padding:10px;">
+        <div class="row">
+          <div class="col-md-12" style="background-color:#fff; background-repeat:no-repeat;
+               border-bottom-radius:0px; padding-bottom:2px; background-size:cover;">
+              <div class="row">
+              <div class="col-md-12">
+              <div class="container homecontainer single_movie_cont">
+	<div class="row plot_row">
+		<div class="col-md-12" style="border-right:1px solid #ccc">
+			<div class="row">
+				<div class="col-md-12">
+				                <div class="row">
+                    <div class="col-md-12">
+                    <h2 style="font-size:12px; text-align:center;"><b>Click and wait for 3 seconds to switch seats location.</b></h2>
+                    </div>
+                    <div class="col-md-12">
+					<div class="row">
+                    <div class="col-md-12 col-sm-6 col-xs-12">
+                    <div class="loading" style="display:none"></div><div class="nafasi"><div style="width:368px; margin:0px auto;" class="keyholder">
+	<div class="keyitem my">Your seat</div>
+	<div class="keyitem available">Available</div>
+	<div class="keyitem sold">Sold</div>
+	<div class="keyitem kscreen">Screen</div>
+	</div><div style="width:368px; margin:0px auto;" class="ite screen"></div><table align="center"></tr><tr><td><div class="item empty">A</div></td><td> <button type="button" onclick="selectSeats(105)" class="swp" name="swp">
+					<div class="item available">13</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(104)" class="swp" name="swp">
+					<div class="item available">12</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(103)" class="swp" name="swp">
+					<div class="item available">11</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(102)" class="swp" name="swp">
+					<div class="item available">10</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(101)" class="swp" name="swp">
+					<div class="item available">9</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(100)" class="swp" name="swp">
+					<div class="item available">8</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(99)" class="swp" name="swp">
+					<div class="item available">7</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(98)" class="swp" name="swp">
+					<div class="item available">6</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(97)" class="swp" name="swp">
+					<div class="item available">5</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(96)" class="swp" name="swp">
+					<div class="item available">4</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(95)" class="swp" name="swp">
+					<div class="item available">3</div>
+					</button></td> <td><div class="item empty"> </div></td> <td><div class="item empty"> </div></td> <td> <button type="button" onclick="selectSeats(94)" class="swp" name="swp">
+					<div class="item available">2</div>
+					</button></td> <td><div class="item my"></div></td> </tr><tr><td><div class="item empty">B</div></td><td> <button type="button" onclick="selectSeats(92)" class="swp" name="swp">
+					<div class="item available">13</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(91)" class="swp" name="swp">
+					<div class="item available">12</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(90)" class="swp" name="swp">
+					<div class="item available">11</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(89)" class="swp" name="swp">
+					<div class="item available">10</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(88)" class="swp" name="swp">
+					<div class="item available">9</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(87)" class="swp" name="swp">
+					<div class="item available">8</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(86)" class="swp" name="swp">
+					<div class="item available">7</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(85)" class="swp" name="swp">
+					<div class="item available">6</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(84)" class="swp" name="swp">
+					<div class="item available">5</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(83)" class="swp" name="swp">
+					<div class="item available">4</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(82)" class="swp" name="swp">
+					<div class="item available">3</div>
+					</button></td> <td><div class="item empty"> </div></td> <td><div class="item empty"> </div></td> <td> <button type="button" onclick="selectSeats(81)" class="swp" name="swp">
+					<div class="item available">2</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(80)" class="swp" name="swp">
+					<div class="item available">1</div>
+					</button></td> </tr><tr><td><div class="item empty">C</div></td><td> <button type="button" onclick="selectSeats(79)" class="swp" name="swp">
+					<div class="item available">13</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(78)" class="swp" name="swp">
+					<div class="item available">12</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(77)" class="swp" name="swp">
+					<div class="item available">11</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(76)" class="swp" name="swp">
+					<div class="item available">10</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(75)" class="swp" name="swp">
+					<div class="item available">9</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(74)" class="swp" name="swp">
+					<div class="item available">8</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(73)" class="swp" name="swp">
+					<div class="item available">7</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(72)" class="swp" name="swp">
+					<div class="item available">6</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(71)" class="swp" name="swp">
+					<div class="item available">5</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(70)" class="swp" name="swp">
+					<div class="item available">4</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(69)" class="swp" name="swp">
+					<div class="item available">3</div>
+					</button></td> <td><div class="item empty"> </div></td> <td><div class="item empty"> </div></td> <td> <button type="button" onclick="selectSeats(68)" class="swp" name="swp">
+					<div class="item available">2</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(67)" class="swp" name="swp">
+					<div class="item available">1</div>
+					</button></td> </tr><tr><td><div class="item empty">D</div></td><td> <button type="button" onclick="selectSeats(66)" class="swp" name="swp">
+					<div class="item available">13</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(65)" class="swp" name="swp">
+					<div class="item available">12</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(64)" class="swp" name="swp">
+					<div class="item available">11</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(63)" class="swp" name="swp">
+					<div class="item available">10</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(62)" class="swp" name="swp">
+					<div class="item available">9</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(61)" class="swp" name="swp">
+					<div class="item available">8</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(60)" class="swp" name="swp">
+					<div class="item available">7</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(59)" class="swp" name="swp">
+					<div class="item available">6</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(58)" class="swp" name="swp">
+					<div class="item available">5</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(57)" class="swp" name="swp">
+					<div class="item available">4</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(56)" class="swp" name="swp">
+					<div class="item available">3</div>
+					</button></td> <td><div class="item empty"> </div></td> <td><div class="item empty"> </div></td> <td> <button type="button" onclick="selectSeats(55)" class="swp" name="swp">
+					<div class="item available">2</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(54)" class="swp" name="swp">
+					<div class="item available">1</div>
+					</button></td> </tr><tr><td><div class="item empty">E</div></td><td> <button type="button" onclick="selectSeats(53)" class="swp" name="swp">
+					<div class="item available">13</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(52)" class="swp" name="swp">
+					<div class="item available">12</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(51)" class="swp" name="swp">
+					<div class="item available">11</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(50)" class="swp" name="swp">
+					<div class="item available">10</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(49)" class="swp" name="swp">
+					<div class="item available">9</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(48)" class="swp" name="swp">
+					<div class="item available">8</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(47)" class="swp" name="swp">
+					<div class="item available">7</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(46)" class="swp" name="swp">
+					<div class="item available">6</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(45)" class="swp" name="swp">
+					<div class="item available">5</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(44)" class="swp" name="swp">
+					<div class="item available">4</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(43)" class="swp" name="swp">
+					<div class="item available">3</div>
+					</button></td> <td><div class="item empty"> </div></td> <td><div class="item empty"> </div></td> <td> <button type="button" onclick="selectSeats(42)" class="swp" name="swp">
+					<div class="item available">2</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(41)" class="swp" name="swp">
+					<div class="item available">1</div>
+					</button></td> </tr><tr><td><div class="item empty">F</div></td><td> <button type="button" onclick="selectSeats(40)" class="swp" name="swp">
+					<div class="item available">13</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(39)" class="swp" name="swp">
+					<div class="item available">12</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(38)" class="swp" name="swp">
+					<div class="item available">11</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(37)" class="swp" name="swp">
+					<div class="item available">10</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(36)" class="swp" name="swp">
+					<div class="item available">9</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(35)" class="swp" name="swp">
+					<div class="item available">8</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(34)" class="swp" name="swp">
+					<div class="item available">7</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(33)" class="swp" name="swp">
+					<div class="item available">6</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(32)" class="swp" name="swp">
+					<div class="item available">5</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(31)" class="swp" name="swp">
+					<div class="item available">4</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(30)" class="swp" name="swp">
+					<div class="item available">3</div>
+					</button></td> <td><div class="item empty"> </div></td> <td><div class="item empty"> </div></td> <td> <button type="button" onclick="selectSeats(29)" class="swp" name="swp">
+					<div class="item available">2</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(28)" class="swp" name="swp">
+					<div class="item available">1</div>
+					</button></td> </tr><tr><td><div class="item empty">G</div></td><td> <button type="button" onclick="selectSeats(27)" class="swp" name="swp">
+					<div class="item available">13</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(26)" class="swp" name="swp">
+					<div class="item available">12</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(25)" class="swp" name="swp">
+					<div class="item available">11</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(24)" class="swp" name="swp">
+					<div class="item available">10</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(23)" class="swp" name="swp">
+					<div class="item available">9</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(22)" class="swp" name="swp">
+					<div class="item available">8</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(21)" class="swp" name="swp">
+					<div class="item available">7</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(20)" class="swp" name="swp">
+					<div class="item available">6</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(19)" class="swp" name="swp">
+					<div class="item available">5</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(18)" class="swp" name="swp">
+					<div class="item available">4</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(17)" class="swp" name="swp">
+					<div class="item available">3</div>
+					</button></td> <td><div class="item empty"> </div></td> <td><div class="item empty"> </div></td> <td> <button type="button" onclick="selectSeats(16)" class="swp" name="swp">
+					<div class="item available">2</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(15)" class="swp" name="swp">
+					<div class="item available">1</div>
+					</button></td> </tr><tr><td><div class="item empty">H</div></td><td> <button type="button" onclick="selectSeats(14)" class="swp" name="swp">
+					<div class="item available">15</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(13)" class="swp" name="swp">
+					<div class="item available">14</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(12)" class="swp" name="swp">
+					<div class="item available">13</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(11)" class="swp" name="swp">
+					<div class="item available">12</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(10)" class="swp" name="swp">
+					<div class="item available">11</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(9)" class="swp" name="swp">
+					<div class="item available">10</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(8)" class="swp" name="swp">
+					<div class="item available">9</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(7)" class="swp" name="swp">
+					<div class="item available">8</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(6)" class="swp" name="swp">
+					<div class="item available">7</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(5)" class="swp" name="swp">
+					<div class="item available">6</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(4)" class="swp" name="swp">
+					<div class="item available">5</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(3)" class="swp" name="swp">
+					<div class="item available">4</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(2)" class="swp" name="swp">
+					<div class="item available">3</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(1)" class="swp" name="swp">
+					<div class="item available">2</div>
+					</button></td> <td> <button type="button" onclick="selectSeats(0)" class="swp" name="swp">
+					<div class="item available">1</div>
+					</button></td> </tr></table></div></div>
+                    </div>	
+				<br/><br/>
+          <a href="https://patahapa.com/pay/?cine=0" class="btn btn-lg btn-primary">Pay for the seats</a>
+          </div>
+    </div>
+    <!-- end row seat maps -->
+        </div>								
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</section>
+    <!-- Main contetn Start -->
+     <!-- Sponsors Section Start -->
+     
+	 <section id="sponsors" class="section">
+	 <div class="container">
+	   <div class="row">
+		 <div class="col-md-12">
+		   <h2 class="section-title wow fadeInUp" data-wow-delay="0s">Our <span> Partners</h2>
+		 </div>
+		 <div class="col-md-2 col-sm-6 col-xs-12">
+		   <div class="spnsors-logo wow fadeInUp" data-wow-delay="0.1s">
+			 <a href="#"><img style="width: 100%;" src="https://patahapa.com/assets/img/sponsors/logo-01.png" alt=""></a>
+		   </div>            
+		 </div>
+		 <div class="col-md-2 col-sm-6 col-xs-12">
+		   <div class="spnsors-logo wow fadeInUp" data-wow-delay="0.2s">
+			 <a href="#"><img style="width: 100%;" src="https://patahapa.com/assets/img/sponsors/11.png" alt=""></a>
+		   </div>            
+		 </div>
+		 <div class="col-md-2 col-sm-6 col-xs-12">
+		   <div class="spnsors-logo wow fadeInUp" data-wow-delay="0.3s">
+			 <a href="#"><img style="width: 100%;" src="https://patahapa.com/assets/img/sponsors/logo-03.png" alt=""></a>
+		   </div>            
+		 </div>
+		 <div class="col-md-2 col-sm-6 col-xs-12">
+		   <div class="spnsors-logo wow fadeInUp" data-wow-delay="0.3s">
+			 <a href="#"><img style="width: 100%;" src="https://patahapa.com/assets/img/sponsors/22.png" alt=""></a>
+		   </div>            
+		 </div>
+		 <div class="col-md-2 col-sm-6 col-xs-12">
+		 <div class="spnsors-logo wow fadeInUp" data-wow-delay="0.3s">
+		   <a href="#"><img style="width: 100%;" src="https://patahapa.com/assets/img/sponsors/44.png" alt=""></a>
+		 </div>            
+	   </div>
+		 <div class="col-md-2 col-sm-6 col-xs-12">
+		   <div class="spnsors-logo wow fadeInUp" data-wow-delay="0.4s">
+			 <a href="#"><img style="width: 100%;" src="https://patahapa.com/assets/img/sponsors/33.png" alt=""></a>
+		   </div>            
+		 </div>
+	   </div>
+	 </div>
+   </section>
+	     <div class="main-content">  
+
+    <!-- Footer Section Start -->   
+    
+	 
+		 <div class="col-md-2 col-sm-3 col-xs-12">
+		 <h3>Byteblade Systems</h3>
+		 <ul>
+		   <li><a href="#">Theatre Systems</a></li>
+		   <li><a href="#">Ticketing Systems</a></li>
+			<li><a href="#">Blade Solutions</a></li>
+		 </ul>
+	   </div>          
+	   </div>
+	 </div>      
+   </footer>
+	     <!-- Footer Section End -->  
+   
+    </div>
+    <!-- Main contetn End -->
+
+    <!-- Copytight Start -->
+    
+	<section id="copyright">
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+		  <p class="copyright-text text-center">
+		Copyright &copy; 2018
+			<a href="#">
+			  Patahapa Movies
+			</a>
+		  </p>
+		</div>
+   <div class="col-md-12">
+		  <p class="copyright-text text-center">Powered by
+		<a style="color: #27adf8; font-size: 14px; font-style: underline;" href="#">Blade systems Inc</a>
+		  </p>
+		</div>
+	  </div>
+	</div>
+  </section> 
+	 
+    <!-- Copytight End -->   
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    </a>
+
+<script>
+// var seatLink = "<phpechoget_baseurl(); ?> swap_seats.php?";
+// function selectSeats(sid) {
+//   document.location = seatLink+'si='+sid;
+// }
+</script>
+<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'a0aeba5b-f33b-4b04-adb6-8d62a9f78a27', f: true }); done = true; } }; })();</script>    <!-- jQuery Load -->    
+   
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Countdown Js -->
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <!-- Smooth scroll JS -->   
+    <script src="assets/js/smooth-scroll.js"></script>        
+    <!-- Wow Scroll -->
+    <script src="assets/js/wow.js"></script>
+    <!-- Owl carousel -->
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- Slicknav js -->
+    <script src="assets/js/jquery.slicknav.js"></script>
+    <!--  Nivo lightbox Js -->
+    <script src="assets/js/nivo-lightbox.js"></script>   
+    <!-- Contact Form Scripts -->
+    <script src="assets/js/form-validator.min.js"></script>  
+    <script src="assets/js/contact-form-script.js"></script>    
+    <!--  Color Switcher js -->
+   <!--  // <script src="assets/js/color-switcher.js"></script>  -->
+    <!-- All Js plugin -->
+    <script src="assets/js/main.js"></script> 
+    <!-- Map JS -->
+    <script type="text/javascript" src="assets/js/jquery.mapit.min.js"></script>
+    <script src="assets/js/initializers.js"></script>
+    
+
+
+  </body>
+</html>
+  </body>
+</html>
